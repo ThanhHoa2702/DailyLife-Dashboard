@@ -16,6 +16,12 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+		body {
+        -webkit-user-select: none; /* Safari */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+/Edge */
+        user-select: none; /* Chuẩn chung */
+    	}
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s; }
         .tab-content { display: none; }
@@ -2492,9 +2498,14 @@ function renderFinance() {
                 options: { responsive: true, maintainAspectRatio: false }
             });
         }
-document.addEventListener('copy', function(e) {
-        e.preventDefault(); // Ngăn chặn dữ liệu được lưu vào clipboard
+		document.addEventListener('copy', function(e) {
+        e.preventDefault(); 
         alert("Bản quyền thuộc về TranThanhHoa. Vui lòng không sao chép!");
+    });
+		document.addEventListener('dragstart', function(e) {
+        if (!e.target.closest('.grip-handle')) {
+            e.preventDefault();
+        }
     });
     </script>
 </body>
