@@ -39,6 +39,7 @@
         .fade-transition { transition: opacity 0.5s ease-in-out; }
     </style>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300">
 
@@ -100,6 +101,8 @@
                 </button>
                 <button onclick="switchTab('yearly')" id="nav-yearly" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all">
                     <i class="fas fa-trophy mr-2"></i> Tổng Kết Năm
+                <button onclick="switchTab('yearly')" id="nav-yearly" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all">
+                    <i class="fas fa-trophy mr-2"></i> Quản lý tài chính
                 </button>
             </nav>
         </div>
@@ -291,6 +294,29 @@
                 </div>
             </div>
         </div>
+        <div id="tab-finance" class="tab-content hidden space-y-6">
+    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+        <h2 class="text-xl font-bold text-slate-800 dark:text-white mb-4">Quản Lý Chi Tiêu</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="md:col-span-1 space-y-4">
+                <select id="finance-type" class="w-full p-2 border border-slate-200 dark:border-slate-600 rounded-xl bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white">
+                    <option value="expense">Chi tiêu</option>
+                    <option value="income">Thu nhập</option>
+                </select>
+                <input type="number" id="finance-amount" placeholder="Số tiền" class="w-full p-2 border border-slate-200 dark:border-slate-600 rounded-xl bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white">
+                <input type="text" id="finance-category" placeholder="Danh mục" class="w-full p-2 border border-slate-200 dark:border-slate-600 rounded-xl bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white">
+                <input type="text" id="finance-note" placeholder="Ghi chú" class="w-full p-2 border border-slate-200 dark:border-slate-600 rounded-xl bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white">
+                <button onclick="addTransaction()" class="w-full bg-blue-600 text-white font-semibold py-2 rounded-xl hover:bg-blue-700 transition-colors">Thêm Giao Dịch</button>
+            </div>
+            <div class="md:col-span-1 flex justify-center items-center">
+                <canvas id="monthlyFinanceChart"></canvas>
+            </div>
+            <div class="md:col-span-1 overflow-y-auto max-h-[300px] pr-2 scrollbar-hide">
+                <ul id="finance-list" class="space-y-3"></ul>
+            </div>
+        </div>
+    </div>
+</div>
 
         <div id="tab-daily" class="tab-content">
             <div class="flex flex-col lg:flex-row gap-6">
@@ -499,7 +525,12 @@
                     </select>
                 </div>
             </div>
-
+<div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 mt-6">
+    <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-4">Biểu Đồ Tài Chính Năm</h3>
+    <div class="relative h-64 w-full">
+        <canvas id="yearlyFinanceChart"></canvas>
+    </div>
+</div>
             <!-- Stats Overview -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 <div class="bg-gradient-to-br from-indigo-500 to-indigo-600 p-5 rounded-2xl shadow-md text-white">
@@ -1015,6 +1046,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         function renderAll() {
+            renderFinance();
             renderGoals();
             renderHabits();
             renderReview();
@@ -1160,9 +1192,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     <div class="space-y-3">
                         <div>
                             <label class="block text-xs font-semibold mb-1 opacity-80">Mục Tiêu SMART</label>
-                            <textarea id="goal-text-${area.id}" onchange="saveData()" class="w-full bg-white/70 dark:bg-black/20 border-0 rounded-lg p-2 text-sm focus:ring-2 focus:ring-indigo-400 outline-none resize-none" rows="2" placeholder="1. 
-                            2. 
-                            3. ">${gData.text}</textarea>
+                            <textarea id="goal-text-${area.id}" onchange="saveData()" class="w-full bg-white/70 dark:bg-black/20 border-0 rounded-lg p-2 text-sm focus:ring-2 focus:ring-indigo-400 outline-none resize-none" rows="2" placeholder=" ">${gData.text}</textarea>
                         </div>
                         <div class="grid grid-cols-2 gap-2">
                             <div>
@@ -1853,6 +1883,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         function prepareYearlyReview() {
+            renderYearlyFinanceChart(document.getElementById('yearly-year-selector').value);
             const yearSelect = document.getElementById('yearly-year-selector');
             if(!yearSelect) return;
             yearSelect.innerHTML = '';
@@ -2046,6 +2077,135 @@ window.addEventListener('DOMContentLoaded', () => {
                     }
                 });
             }
+        }
+        let monthlyFinChartInst = null;
+        let yearlyFinChartInst = null;
+        
+        function addTransaction() {
+            if (!currentMonthKey || !appData[currentMonthKey]) return;
+            if (!appData[currentMonthKey].finance) appData[currentMonthKey].finance = [];
+            
+            const type = document.getElementById('finance-type').value;
+            const amount = parseFloat(document.getElementById('finance-amount').value);
+            const category = document.getElementById('finance-category').value.trim();
+            const note = document.getElementById('finance-note').value.trim();
+            
+            if (!amount || !category) return;
+            
+            appData[currentMonthKey].finance.push({
+                id: Date.now(),
+                type,
+                amount,
+                category,
+                note,
+                date: new Date().toLocaleDateString('vi-VN')
+            });
+            
+            document.getElementById('finance-amount').value = '';
+            document.getElementById('finance-category').value = '';
+            document.getElementById('finance-note').value = '';
+            
+            saveData();
+            renderFinance();
+        }
+        
+        function deleteTransaction(id) {
+            if (!currentMonthKey || !appData[currentMonthKey] || !appData[currentMonthKey].finance) return;
+            appData[currentMonthKey].finance = appData[currentMonthKey].finance.filter(t => t.id !== id);
+            saveData();
+            renderFinance();
+        }
+        
+        function renderFinance() {
+            const list = document.getElementById('finance-list');
+            if (!list || !appData[currentMonthKey]) return;
+            list.innerHTML = '';
+            
+            if (!appData[currentMonthKey].finance) appData[currentMonthKey].finance = [];
+            let expenseData = {};
+            
+            appData[currentMonthKey].finance.forEach(t => {
+                const li = document.createElement('li');
+                li.className = "flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-100 dark:border-slate-600";
+                const colorClass = t.type === 'income' ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-500 dark:text-rose-400';
+                const sign = t.type === 'income' ? '+' : '-';
+                
+                li.innerHTML = `
+                    <div>
+                        <div class="font-semibold text-slate-800 dark:text-white">${t.category}</div>
+                        <div class="text-xs text-slate-500">${t.date} ${t.note ? '- ' + t.note : ''}</div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="font-bold ${colorClass}">${sign}${t.amount.toLocaleString('vi-VN')}</span>
+                        <button onclick="deleteTransaction(${t.id})" class="text-slate-400 hover:text-rose-500 transition-colors">✕</button>
+                    </div>
+                `;
+                list.appendChild(li);
+                
+                if (t.type === 'expense') {
+                    expenseData[t.category] = (expenseData[t.category] || 0) + t.amount;
+                }
+            });
+            
+            updateMonthlyFinanceChart(expenseData);
+        }
+        
+        function updateMonthlyFinanceChart(expenseData) {
+            const ctx = document.getElementById('monthlyFinanceChart');
+            if (!ctx) return;
+            if (monthlyFinChartInst) monthlyFinChartInst.destroy();
+            
+            const labels = Object.keys(expenseData);
+            const data = Object.values(expenseData);
+            if (labels.length === 0) return;
+            
+            monthlyFinChartInst = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: ['#f43f5e', '#f97316', '#eab308', '#84cc16', '#06b6d4', '#3b82f6', '#8b5cf6', '#d946ef'],
+                        borderWidth: 0
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { position: 'bottom' } }, cutout: '70%' }
+            });
+        }
+        
+        function renderYearlyFinanceChart(year) {
+            const ctx = document.getElementById('yearlyFinanceChart');
+            if (!ctx) return;
+            if (yearlyFinChartInst) yearlyFinChartInst.destroy();
+            
+            const months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+            const incomeData = [];
+            const expenseData = [];
+            
+            months.forEach(m => {
+                const monthKey = `${year}-${m}`;
+                let inc = 0, exp = 0;
+                if (appData[monthKey] && appData[monthKey].finance) {
+                    appData[monthKey].finance.forEach(t => {
+                        if (t.type === 'income') inc += t.amount;
+                        else exp += t.amount;
+                    });
+                }
+                incomeData.push(inc);
+                expenseData.push(exp);
+            });
+            
+            yearlyFinChartInst = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: months.map(m => `Th ${m}`),
+                    datasets: [
+                        { label: 'Thu', data: incomeData, backgroundColor: '#10b981', borderRadius: 4 },
+                        { label: 'Chi', data: expenseData, backgroundColor: '#f43f5e', borderRadius: 4 }
+                    ]
+                },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
         }
     </script>
 </body>
