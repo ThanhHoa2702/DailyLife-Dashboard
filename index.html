@@ -86,10 +86,10 @@
                     <i class="fas fa-check-double mr-2"></i> Thói Quen
                 </button>
                 <button onclick="switchTab('calendar')" id="nav-calendar" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all">
-                    <i class="fas fa-calendar-alt mr-2"></i> Lịch Timeline
+                    <i class="fas fa-calendar-alt mr-2"></i> Calendar
                 </button>
                 <button onclick="switchTab('daily')" id="nav-daily" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all">
-                    <i class="fas fa-list-check mr-2"></i> Ngày (Daily)
+                    <i class="fas fa-list-check mr-2"></i> Daily
                 </button>
                 <button onclick="switchTab('inbox')" id="nav-inbox" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all">
                     <i class="fas fa-inbox mr-2"></i> Trạm Ý Tưởng
@@ -129,7 +129,7 @@
                 <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center space-x-4 transition-colors">
                     <div class="p-3 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 rounded-xl"><i class="fas fa-fire fa-2x"></i></div>
                     <div>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Độ Chăm Chỉ (Habits)</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">Độ Chăm Chỉ</p>
                         <h3 class="text-2xl font-bold text-slate-800 dark:text-white" id="stat-habit">0%</h3>
                     </div>
                 </div>
@@ -163,7 +163,7 @@
             <div class="flex justify-between items-end mb-6">
                 <div>
                     <h2 class="text-2xl font-bold text-slate-800 dark:text-white">Mục Tiêu SMART & Rủi Ro</h2>
-                    <p class="text-slate-500 dark:text-slate-400 mt-1">Phân bổ 4 khía cạnh và phương án dự phòng (If-Then).</p>
+                    <p class="text-slate-500 dark:text-slate-400 mt-1">Phân bổ 4 khía cạnh và phương án dự phòng.</p>
                 </div>
             </div>
 
@@ -349,13 +349,13 @@
                 <div class="w-full lg:w-2/3">
                     <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
                         <h2 class="text-xl font-bold text-slate-800 dark:text-white mb-1">Ma Trận Eisenhower</h2>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Phân loại công việc MITs (Most Important Tasks)</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">Phân loại công việc</p>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <!-- P1 -->
                             <div class="border border-red-200 dark:border-red-900/50 bg-red-50/30 dark:bg-red-900/10 rounded-xl p-4 transition-colors">
                                 <h4 class="font-bold text-red-700 dark:text-red-400 mb-2 flex justify-between items-center">
-                                    <span>P1: Gấp & Quan Trọng</span>
+                                    <span>P1: Khẩn cấp và quan trọng</span>
                                     <button onclick="addDailyTask('p1')" class="text-red-500 hover:text-red-700"><i class="fas fa-plus-circle"></i></button>
                                 </h4>
                                 <div id="tasks-p1" class="space-y-2 min-h-[100px]"></div>
@@ -363,7 +363,7 @@
                             <!-- P2 -->
                             <div class="border border-blue-200 dark:border-blue-900/50 bg-blue-50/30 dark:bg-blue-900/10 rounded-xl p-4 transition-colors">
                                 <h4 class="font-bold text-blue-700 dark:text-blue-400 mb-2 flex justify-between items-center">
-                                    <span>P2: Quan Trọng (Trọng tâm)</span>
+                                    <span>P2: Quan trọng nhưng không khẩn cấp </span>
                                     <button onclick="addDailyTask('p2')" class="text-blue-500 hover:text-blue-700"><i class="fas fa-plus-circle"></i></button>
                                 </h4>
                                 <div id="tasks-p2" class="space-y-2 min-h-[100px]"></div>
@@ -371,7 +371,7 @@
                             <!-- P3 -->
                             <div class="border border-orange-200 dark:border-orange-900/50 bg-orange-50/30 dark:bg-orange-900/10 rounded-xl p-4 transition-colors">
                                 <h4 class="font-bold text-orange-700 dark:text-orange-400 mb-2 flex justify-between items-center">
-                                    <span>P3: Gấp - K.Quan Trọng</span>
+                                    <span>P3: Khẩn cấp nhưng không quan trọng</span>
                                     <button onclick="addDailyTask('p3')" class="text-orange-500 hover:text-orange-700"><i class="fas fa-plus-circle"></i></button>
                                 </h4>
                                 <div id="tasks-p3" class="space-y-2 min-h-[100px]"></div>
@@ -379,7 +379,7 @@
                             <!-- P4 -->
                             <div class="border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 rounded-xl p-4 transition-colors">
                                 <h4 class="font-bold text-slate-600 dark:text-slate-400 mb-2 flex justify-between items-center">
-                                    <span>P4: K.Gấp - K.Quan Trọng</span>
+                                    <span>P4: Không khẩn cấp và không quan trọng</span>
                                     <button onclick="addDailyTask('p4')" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"><i class="fas fa-plus-circle"></i></button>
                                 </h4>
                                 <div id="tasks-p4" class="space-y-2 min-h-[100px]"></div>
@@ -406,9 +406,9 @@
         <div id="tab-inbox" class="tab-content">
             <div class="flex flex-col mb-8">
                 <h2 class="text-2xl font-bold text-slate-800 dark:text-white mb-2 flex items-center">
-                    <i class="fas fa-inbox text-indigo-500 mr-3"></i> Trạm Ý Tưởng (Inbox)
+                    <i class="fas fa-inbox text-indigo-500 mr-3"></i> Trạm Ý Tưởng
                 </h2>
-                <p class="text-slate-500 dark:text-slate-400">Đổ mọi ý tưởng, suy nghĩ bất chợt vào đây để giải phóng não bộ (phương pháp GTD). Dữ liệu ở đây được lưu trữ vĩnh viễn và độc lập, bạn có thể xử lý chúng sau khi đã rảnh rỗi.</p>
+                <p class="text-slate-500 dark:text-slate-400"> Mọi ý tưởng, suy nghĩ bất chợt hãy viết ra chuyển hoá thành dữ liệu lưu trữ và giải phóng não bộ.</p>
             </div>
 
             <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 mb-8 flex gap-3 transition-colors">
@@ -1150,11 +1150,11 @@ window.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div class="grid grid-cols-2 gap-2">
                             <div>
-                                <label class="block text-xs font-semibold mb-1 opacity-80 text-red-600 dark:text-red-400">Rủi ro (If)</label>
+                                <label class="block text-xs font-semibold mb-1 opacity-80 text-red-600 dark:text-red-400">Rủi ro </label>
                                 <input type="text" id="goal-risk-${area.id}" onchange="saveData()" class="w-full bg-white/70 dark:bg-black/20 border-0 rounded-lg p-2 text-xs focus:ring-2 focus:ring-red-400 outline-none" value="${gData.risk}">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold mb-1 opacity-80 text-emerald-600 dark:text-emerald-400">Dự phòng (Then)</label>
+                                <label class="block text-xs font-semibold mb-1 opacity-80 text-emerald-600 dark:text-emerald-400">Dự phòng </label>
                                 <input type="text" id="goal-ifthen-${area.id}" onchange="saveData()" class="w-full bg-white/70 dark:bg-black/20 border-0 rounded-lg p-2 text-xs focus:ring-2 focus:ring-emerald-400 outline-none" value="${gData.ifthen}">
                             </div>
                         </div>
