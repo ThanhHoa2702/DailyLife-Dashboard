@@ -17,7 +17,8 @@
 
 <img width="1466" height="1024" alt="image" src="https://github.com/user-attachments/assets/eab22c6e-3f36-4fe8-b4de-29ff91dae72d" />
 
-<img width="728" height="599" alt="image" src="https://github.com/user-attachments/assets/2fb147bd-4793-4110-94b5-ade5d67216ac" />
+<img width="1039" height="604" alt="image" src="https://github.com/user-attachments/assets/2fd6fa46-9dce-42a3-a2af-879664b7fa6e" />
+
 
 ## Cách sử dụng
 ---
