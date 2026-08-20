@@ -38,6 +38,7 @@
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .fade-transition { transition: opacity 0.5s ease-in-out; }
     </style>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 </head>
 <body class="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 transition-colors duration-300">
 
@@ -75,7 +76,7 @@
             </div>
 
             <!-- Tabs Navigation -->
-            <nav class="flex overflow-x-auto hide-scrollbar space-x-1 py-2">
+            <nav id="main-tabs-nav" class="flex space-x-2 overflow-x-auto pb-2 scrollbar-hide mb-6 border-b border-slate-200 dark:border-slate-700">
                 <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-400">
                     <i class="fas fa-chart-pie mr-2"></i> Tổng Quan
                 </button>
@@ -650,8 +651,21 @@
             { id: 'finance', name: 'Tài Chính', color: 'bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-800' },
             { id: 'relation', name: 'Mối Quan Hệ', color: 'bg-pink-50 dark:bg-pink-900/20 text-pink-700 dark:text-pink-400 border-pink-200 dark:border-pink-800' }
         ];
+        function loadTabOrder() {
+            const tabsNav = document.getElementById('main-tabs-nav');
+            if (!tabsNav) return;
+            const savedOrder = JSON.parse(localStorage.getItem('lifeos_tabs_order'));
+            if (savedOrder && savedOrder.length > 0) {
+                savedOrder.forEach(tabId => {
+                    const btn = tabsNav.querySelector(`[data-tab="${tabId}"]`);
+                    if (btn) tabsNav.appendChild(btn); 
+                });
+            }
+        }
 
         function initApp() {
+            loadTabOrder();
+            initSortable();
             // Check Dark Mode
             if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 isDarkMode = true;
@@ -1996,7 +2010,41 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         window.onload = initApp;
-
+        function loadTabOrder() {
+            const tabsNav = document.getElementById('main-tabs-nav');
+            if (!tabsNav) return;
+            const savedOrder = JSON.parse(localStorage.getItem('lifeos_tabs_order'));
+            if (savedOrder && savedOrder.length > 0) {
+                savedOrder.forEach(tabId => {
+                    const btn = tabsNav.querySelector(`[data-tab="${tabId}"]`);
+                    if (btn) tabsNav.appendChild(btn);
+                });
+            }
+        }
+        
+        function initSortable() {
+            const goalsList = document.getElementById('goals-container');
+            if (goalsList) Sortable.create(goalsList, { animation: 150, handle: '.grip-handle', onEnd: saveData });
+        
+            const dailyList = document.getElementById('daily-tasks-list');
+            if (dailyList) Sortable.create(dailyList, { animation: 150, handle: '.grip-handle', onEnd: saveData });
+        
+            const inboxList = document.getElementById('inbox-list');
+            if (inboxList) Sortable.create(inboxList, { animation: 150, handle: '.grip-handle', onEnd: saveInbox });
+        
+            const tabsNav = document.getElementById('main-tabs-nav');
+            if (tabsNav) {
+                Sortable.create(tabsNav, {
+                    animation: 150,
+                    delay: 200,
+                    delayOnTouchOnly: true,
+                    onEnd: function () {
+                        const order = Array.from(tabsNav.children).map(btn => btn.getAttribute('data-tab'));
+                        localStorage.setItem('lifeos_tabs_order', JSON.stringify(order));
+                    }
+                });
+            }
+        }
     </script>
 </body>
 </html>
