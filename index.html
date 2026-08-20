@@ -78,13 +78,33 @@
 
             <!-- Tabs Navigation -->
             <nav id="main-tabs-nav" class="flex space-x-2 overflow-x-auto pb-2 scrollbar-hide mb-6 border-b border-slate-200 dark:border-slate-700">
-                <button class="tab-btn active bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200" data-tab="tab-dashboard">Tổng Quan</button>
-                <button class="tab-btn text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200" data-tab="tab-goals">Mục Tiêu</button>
-                <button class="tab-btn text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200" data-tab="tab-finance">Tài Chính</button>
-                <button class="tab-btn text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200" data-tab="tab-daily">Kế Hoạch Ngày</button>
-                <button class="tab-btn text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200" data-tab="tab-inbox">Trạm Ý Tưởng</button>
-                <button class="tab-btn text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200" data-tab="tab-review">Đánh Giá</button>
-                <button class="tab-btn text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200" data-tab="tab-yearly">Tổng Kết Năm</button>
+                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all bg-indigo-50 dark:bg-slate-700 text-indigo-700 dark:text-indigo-400">
+                    <i class="fas fa-chart-pie mr-2"></i> Tổng Quan
+                </button>
+                <button onclick="switchTab('goals')" id="nav-goals" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all">
+                    <i class="fas fa-bullseye mr-2"></i> Mục Tiêu
+                </button>
+                <button onclick="switchTab('habits')" id="nav-habits" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all">
+                    <i class="fas fa-check-double mr-2"></i> Thói Quen
+                </button>
+                <button onclick="switchTab('calendar')" id="nav-calendar" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all">
+                    <i class="fas fa-calendar-alt mr-2"></i> Calendar
+                </button>
+                <button onclick="switchTab('daily')" id="nav-daily" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all">
+                    <i class="fas fa-list-check mr-2"></i> Daily
+                </button>
+                <button onclick="switchTab('inbox')" id="nav-inbox" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all">
+                    <i class="fas fa-inbox mr-2"></i> Trạm Ý Tưởng
+                </button>
+                <button onclick="switchTab('review')" id="nav-review" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all">
+                    <i class="fas fa-star mr-2"></i> Đánh Giá
+                </button>
+                <button onclick="switchTab('yearly')" id="nav-yearly" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all">
+                    <i class="fas fa-trophy mr-2"></i> Tổng Kết Năm
+                </button>
+                  <button onclick="switchTab('yearly')" id="nav-yearly" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-slate-700 transition-all">
+                    <i class="fas fa-trophy mr-2"></i> Quản lý tài chính
+                </button>
             </nav>
         </div>
     </header>
