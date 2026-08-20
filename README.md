@@ -4,7 +4,7 @@
 
 ## 🎯 Tính năng cốt lõi
 
-*   **📊 QUản lý Tài chính:** Theo dõi dòng tiền thu, chi, tích lũy bằng biểu đồ tự động cập nhật theo thời gian thực.
+*   **📊 Quản lý Tài chính:** Theo dõi dòng tiền thu, chi, tích lũy bằng biểu đồ tự động cập nhật theo thời gian thực.
 *   **🛠 Quản trị Mục tiêu & Thói quen:** Theo dõi tiến độ theo ngày/tháng với cơ sở dữ liệu lưu trữ bằng ổ cứng thiết bị.
 *   **🔄 Linh hoạt:** Chứa nhiều chức năng giúp tối ưu hóa việc quản lý mục tiêu ngắn hạn và dài hạn.
 *   **📈 Trích xuất báo cáo** Tổng hợp toàn bộ dữ liệu JSON trong tháng và biên dịch thành file Báo cáo Excel định dạng chuẩn.
@@ -25,5 +25,8 @@
 ## 💻 Hướng dẫn đồng bộ các nền tảng 
 
 --- 
+
 ## REVIEW
-Dự án học thuật chỉ mang tính chất tham khảo. Các bạn có thể sử dụng để xây dựng thói quen, tạo mục tiêu theo dõi cá nhân. Phần mềm không cần mạng trực tuyến vẫn có thể kết nối được, sử dụng chính bộ nhớ trên ổ cứng mà thiết bị các bạn sử dụng.
+- Dự án học thuật chỉ mang tính chất tham khảo. Các bạn có thể sử dụng để xây dựng thói quen, tạo mục tiêu theo dõi cá nhân.
+- Phần mềm không cần mạng trực tuyến vẫn có thể kết nối được, sử dụng chính bộ nhớ trên ổ cứng thiết bị truy cập.
+- Mọi ý kiến, cập nhật, chỉnh sửa các bạn có thể góp ý để mình có thể cải thiện. 
