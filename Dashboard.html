@@ -239,11 +239,11 @@
                             <tr id="habit-header-row">
                                 <th scope="col" class="px-4 py-3 sticky left-0 bg-slate-50 dark:bg-slate-900 z-10 min-w-[240px] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)] dark:shadow-[2px_0_5px_-2px_rgba(0,0,0,0.5)] transition-colors">Tên Thói Quen</th>
                                 <th scope="col" class="px-2 py-3 text-center w-24">Streak🔥</th>
-                                <!-- Days injected by JS -->
+  
                             </tr>
                         </thead>
                         <tbody id="habit-body">
-                            <!-- Habits injected by JS -->
+
                         </tbody>
                     </table>
                 </div>
@@ -253,7 +253,7 @@
         <div id="tab-calendar" class="tab-content">
             <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col overflow-hidden transition-colors" style="height: calc(100vh - 160px); min-height: 600px;">
                 
-                <!-- Header Lịch Tuần -->
+                <!-- Header Calendar -->
                 <div class="p-3 sm:p-4 border-b border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row justify-between items-center bg-white dark:bg-slate-800 z-20 gap-3 transition-colors">
                     <div class="flex items-center space-x-3">
                         <button onclick="goToTodayCal()" class="border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 px-3 py-1.5 rounded-lg text-sm font-semibold transition-colors shadow-sm">
@@ -270,14 +270,14 @@
                     </button>
                 </div>
 
-                <!-- Lưới Lịch (Grid) -->
+                <!-- Grid -->
                 <div class="flex-grow flex flex-col overflow-hidden relative bg-white dark:bg-slate-800 transition-colors">
                     
                     <!-- Hàng Tiêu Đề Ngày (Thứ 2 -> CN) -->
                     <div class="flex border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 z-20 shadow-sm transition-colors">
                         <div class="w-16 sm:w-20 flex-shrink-0 border-r border-slate-200 dark:border-slate-700 text-[10px] sm:text-xs font-bold text-slate-400 text-center py-2 flex flex-col justify-end pb-3 uppercase tracking-widest">GMT+07</div>
                         <div class="flex-grow grid grid-cols-7" id="cal-days-header">
-                            <!-- JS Injected -->
+                        
                         </div>
                     </div>
 
@@ -288,7 +288,7 @@
                             Nhiệm vụ
                         </div>
                         <div class="flex-grow grid grid-cols-7" id="cal-allday-row">
-                            <!-- JS Injected -->
+                    
                         </div>
                     </div>
 
@@ -303,12 +303,12 @@
                         </div>
 
                         <div class="flex relative h-[1440px]"> <!-- 24 giờ * 60px -->
-                            <!-- Cột Nhãn Giờ (1 AM, 2 AM...) -->
+                            <!-- Cột Nhãn Giờ  -->
                             <div class="w-16 sm:w-20 flex-shrink-0 border-r border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 relative z-20 transition-colors" id="cal-time-labels">
                                 <!-- JS Injected -->
                             </div>
 
-                            <!-- 7 Cột Ngày (Chứa các Event block) -->
+                            <!-- 7 Cột Ngày Chứa các Event block -->
                             <div class="flex-grow grid grid-cols-7 relative" id="cal-grid-body">
                                 <!-- JS Injected -->
                             </div>
@@ -333,7 +333,7 @@
         <!-- Cột nhập liệu -->
         <div class="lg:col-span-1 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 space-y-4 h-fit">
             <h3 class="font-bold text-slate-800 dark:text-white mb-4">Thêm giao dịch</h3>
-            <!-- Thêm sự kiện onchange để tự đổi danh mục -->
+            <!-- Thêm sự kiện để tự đổi danh mục -->
             <select id="finance-type" onchange="updateCategoryOptions()" class="w-full p-3 rounded-xl bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-white">
                 <option value="expense">Chi tiêu</option>
                 <option value="income">Thu nhập / Tích luỹ</option>
@@ -405,7 +405,7 @@
                         </div>
                     </div>
                     
-                    <!-- Pomodoro Timer -->
+                    <!-- Pomodoro -->
                     <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden group transition-colors">
                         <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 opacity-50 z-0"></div>
                         <div class="relative z-10 flex flex-col items-center text-center">
@@ -470,7 +470,7 @@
                         </div>
                     </div>
 
-                    <!-- Nhật ký (Daily Journal) -->
+                    <!-- Nhật ký  -->
                     <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 mt-6 transition-colors">
                         <div class="flex justify-between items-end mb-4">
                             <div>
@@ -577,7 +577,7 @@
                 </div>
                 <div class="flex items-center bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-1 shadow-sm transition-colors">
                     <select id="yearly-year-selector" class="bg-transparent border-none text-sm font-bold text-indigo-600 dark:text-indigo-400 focus:ring-0 cursor-pointer py-1.5 px-3 outline-none" onchange="renderYearly()">
-                        <!-- Năm được render bằng JS -->
+            
                     </select>
                 </div>
             </div>
