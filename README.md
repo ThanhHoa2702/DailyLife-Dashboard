@@ -19,6 +19,7 @@
 
 <img width="1039" height="604" alt="image" src="https://github.com/user-attachments/assets/2fd6fa46-9dce-42a3-a2af-879664b7fa6e" />
 
+---
 
 ## Mô tả
 
@@ -29,6 +30,13 @@
 - Các tab quản lý có thể kéo thả, sắp xếp theo sở thích.
 
 - Hiện tại chưa có chức năng đồng bộ trên nhiều thiết bị, nên chỉ sẽ có dữ liệu khi bạn truy cập vào 1 thiết bị. Nếu truy cập ứng dụng vào thiết bị khác thì sẽ không có thông tin.
+
+---
+
+## REVIEW
+- Dự án học thuật chỉ mang tính chất tham khảo. Các bạn có thể sử dụng để xây dựng thói quen, tạo mục tiêu theo dõi cá nhân.
+- Phần mềm không cần mạng trực tuyến vẫn có thể kết nối được, sử dụng bộ nhớ thiết bị truy cập của các bạn yên tâm về dữ liệu của mình.
+- Mọi ý kiến, cập nhật, chỉnh sửa các bạn có thể góp ý để mình có thể cải thiện.
 
 ---
 
@@ -116,12 +124,3 @@ Về phần code tôi đã tạo sẵn các bạn chỉ cần thao tác để t�
 Chúc các bạn làm thành công. 
 
 
-
-
-
---- 
-
-## REVIEW
-- Dự án học thuật chỉ mang tính chất tham khảo. Các bạn có thể sử dụng để xây dựng thói quen, tạo mục tiêu theo dõi cá nhân.
-- Phần mềm không cần mạng trực tuyến vẫn có thể kết nối được, sử dụng bộ nhớ thiết bị truy cập của các bạn yên tâm về dữ liệu của mình.
-- Mọi ý kiến, cập nhật, chỉnh sửa các bạn có thể góp ý để mình có thể cải thiện. 
