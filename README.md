@@ -2,12 +2,12 @@
 
 **LifeOS** là một hệ thống quản lý cá nhân toàn diện hoạt động trực tiếp trên trình duyệt. Ứng dụng giúp số hóa các hoạt động hàng ngày thành một luồng dữ liệu có cấu trúc, cho phép theo dõi, trực quan hóa và xuất báo cáo tự động.
 
-## 🎯 Tính năng cốt lõi
+## Tính năng cốt lõi
 
-*   **📊 Quản lý Tài chính:** Theo dõi dòng tiền thu, chi, tích lũy bằng biểu đồ tự động cập nhật theo thời gian thực.
-*   **🛠 Quản trị Mục tiêu & Thói quen:** Theo dõi tiến độ theo ngày/tháng với cơ sở dữ liệu lưu trữ bằng bộ nhớ thiết bị.
-*   **🔄 Linh hoạt:** Chứa nhiều chức năng giúp tối ưu hóa việc quản lý mục tiêu ngắn hạn và dài hạn.
-*   **📈 Trích xuất báo cáo** Tổng hợp toàn bộ dữ liệu JSON trong tháng và biên dịch thành file Báo cáo Excel định dạng chuẩn.
+*   **Quản lý Tài chính:** Theo dõi dòng tiền thu, chi, tích lũy bằng biểu đồ tự động cập nhật theo thời gian thực.
+*   **Quản trị Mục tiêu & Thói quen:** Theo dõi tiến độ theo ngày/tháng với cơ sở dữ liệu lưu trữ bằng bộ nhớ thiết bị.
+*   **Linh hoạt:** Chứa nhiều chức năng giúp tối ưu hóa việc quản lý mục tiêu ngắn hạn và dài hạn.
+*   **Trích xuất báo cáo** Tổng hợp toàn bộ dữ liệu JSON trong tháng và biên dịch thành file Báo cáo Excel định dạng chuẩn.
 
 ---
 
@@ -32,7 +32,7 @@
 
 ---
 
-## 💻 Hướng dẫn đồng bộ các nền tảng 
+## Hướng dẫn đồng bộ
 
 --- 
 
